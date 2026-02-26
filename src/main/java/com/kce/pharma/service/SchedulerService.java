@@ -10,10 +10,10 @@ import com.kce.pharma.client.InventoryClient;
 import com.kce.pharma.entity.NotificationSettings;
 import com.kce.pharma.repository.SettingsRepository;
 
-import lombok.RequiredArgsConstructor;
+
 
 @Service
-@RequiredArgsConstructor
+
 public class SchedulerService {
 
     private final InventoryClient inventoryClient;

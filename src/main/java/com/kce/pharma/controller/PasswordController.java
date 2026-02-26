@@ -2,7 +2,7 @@ package com.kce.pharma.controller;
 
 import com.kce.pharma.entity.PasswordResetRequest;
 import com.kce.pharma.service.PasswordService;
-import lombok.RequiredArgsConstructor;
+
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/password")
-@RequiredArgsConstructor
+
 public class PasswordController {
 
     public PasswordController(PasswordService passwordService) {

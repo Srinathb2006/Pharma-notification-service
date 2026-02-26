@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import com.kce.pharma.entity.Notification;
 import com.kce.pharma.repository.NotificationRepository;
 
-import lombok.RequiredArgsConstructor;
+
 
 @Service
-@RequiredArgsConstructor
+
 public class NotificationService {
 
     private final NotificationRepository repository;

@@ -10,10 +10,10 @@ import com.kce.pharma.client.AuthClient;
 import com.kce.pharma.entity.PasswordResetRequest;
 import com.kce.pharma.repository.PasswordResetRepository;
 
-import lombok.RequiredArgsConstructor;
+
 
 @Service
-@RequiredArgsConstructor
+
 public class PasswordService {
 
     private final PasswordResetRepository repo;
