@@ -1,9 +1,7 @@
 package com.kce.pharma.controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.kce.pharma.dto.EmailRequest;
+import org.springframework.web.bind.annotation.*;
 
 import com.kce.pharma.service.EmailService;
 
@@ -18,9 +16,7 @@ public class EmailController {
     }
 
     @PostMapping("/send")
-    public void send(@RequestParam String to,
-                     @RequestParam String subject,
-                     @RequestParam String body) {
-        emailService.send(to, subject, body);
+    public void send(@RequestBody EmailRequest request) {
+        emailService.send(request.getTo(), request.getSubject(), request.getBody());
     }
 }
