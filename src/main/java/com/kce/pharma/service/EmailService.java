@@ -9,13 +9,17 @@ import java.util.Map;
 @Service
 public class EmailService {
 
-```
 private static final String BREVO_API_URL = "https://api.brevo.com/v3/smtp/email";
 private static final String API_KEY = System.getenv("BREVO_API_KEY");
 
 public void send(String to, String subject, String body) {
 
     try {
+
+        if (API_KEY == null || API_KEY.isEmpty()) {
+            System.err.println("BREVO_API_KEY is not set!");
+            return;
+        }
 
         RestTemplate restTemplate = new RestTemplate();
 
@@ -26,7 +30,7 @@ public void send(String to, String subject, String body) {
         Map<String, Object> request = Map.of(
                 "sender", Map.of(
                         "name", "PharmaCare",
-                        "email", "sbrinath479@gmail.com"
+                        "email", "bsrinath479@gmail.com"
                 ),
                 "to", new Object[]{
                         Map.of("email", to)
@@ -37,10 +41,12 @@ public void send(String to, String subject, String body) {
 
         HttpEntity<Map<String, Object>> entity = new HttpEntity<>(request, headers);
 
-        restTemplate.postForEntity(BREVO_API_URL, entity, String.class);
+        ResponseEntity<String> response =
+                restTemplate.postForEntity(BREVO_API_URL, entity, String.class);
 
         System.out.println("=================================");
-        System.out.println("EMAIL SENT SUCCESSFULLY USING BREVO API");
+        System.out.println("EMAIL SENT USING BREVO API");
+        System.out.println("Status: " + response.getStatusCode());
         System.out.println("To: " + to);
         System.out.println("=================================");
 
@@ -56,6 +62,4 @@ public void send(String to, String subject, String body) {
 
     }
 }
-```
-
 }
